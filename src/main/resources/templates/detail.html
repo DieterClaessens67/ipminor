@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Task detail</title>
+</head>
+<nav>
+    <ul>
+        <li> <a href="/tasks">TaskOverview</a></li>
+        <li><a href="/tasks/new">AddTask</a> </li>
+    </ul>
+</nav>
+<body>
+<h1>Task detail</h1>
+<table>
+    <tr>
+        <th>Title: </th>
+        <td th:text="${task.title}"></td>
+    </tr>
+    <tr>
+        <th>Description: </th>
+        <td th:text="${task.description}"></td>
+    </tr>
+    <tr>
+        <th>Due date: </th>
+        <td th:text="${task.dueDate}"></td>
+    </tr>
+    <tr>
+    <th>Subtasks:</th>
+    </tr>
+    <tr>
+        <td>
+        <ul>
+    <th:block th:each="subTask : ${subtasks}">
+        <a th:href="@{/tasks/{subId}/sub(subId = ${subTask.sId})}"><li th:text="${subTask.title}"></li> </a>
+        <form method="post" th:action="@{/tasks/sub/delete/{subId}(subId = ${subTask.sId})}" class="inline">
+            <input type="hidden" name="extra_submit_param" value="extra_submit_value">
+            <button type="submit" name="submit_param" value="submit_value" class="link-button">
+                Delete SubTask
+            </button>
+        </form>
+    </th:block>
+        </ul>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

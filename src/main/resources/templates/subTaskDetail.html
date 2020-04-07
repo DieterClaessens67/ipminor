@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Task detail</title>
+</head>
+<nav>
+    <ul>
+        <li> <a href="/tasks">TaskOverview</a></li>
+        <li><a href="/tasks/new">AddTask</a> </li>
+        <li><a th:href="@{/tasks/{id}(id = ${subtask.parentID})}">Main Task</a> </li>
+    </ul>
+</nav>
+<body>
+<h1>Subtask detail</h1>
+<table>
+    <tr>
+        <th>Title: </th>
+        <td th:text="${subtask.title}"></td>
+    </tr>
+    <tr>
+        <th>Description: </th>
+        <td th:text="${subtask.description}"></td>
+    </tr>
+    <tr>
+        <th>Due date: </th>
+        <td th:text="${subtask.dueDate}"></td>
+    </tr>
+    <tr>
+        <td>
+            <a th:href="@{/tasks/sub/edit/{subId}(subId = ${subtask.getsId()})}">edit Subtask</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

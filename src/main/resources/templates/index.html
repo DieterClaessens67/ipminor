@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Overview</title>
+</head>
+<nav>
+    <ul>
+        <li> <a href="/tasks">TaskOverview</a></li>
+        <li><a href="/tasks/new">AddTask</a> </li>
+    </ul>
+</nav>
+<body>
+<h1>Tasks</h1>
+<th:block th:each="error : ${errors}">
+    <p th:text="${error}"></p>
+</th:block>
+<ul>
+    <th:block th:each="task : ${tasks}">
+        <a th:href="@{/tasks/{id}(id = ${task.id})}"> <li th:text="${task.toString()}"></li> </a>
+        <a th:href="@{/tasks/edit/{id}(id = ${task.id})}">edit</a>
+        <a th:href="@{/tasks/{id}/sub/create(id = ${task.id})}">create subtask</a>
+        <form method="post" th:action="@{/tasks/delete/{id}(id = ${task.id})}" class="inline">
+            <input type="hidden" name="extra_submit_param" value="extra_submit_value">
+            <button type="submit" name="submit_param" value="submit_value" class="link-button">
+                Delete Task
+            </button>
+        </form>
+    </th:block>
+</ul>
+</body>
+</html>
