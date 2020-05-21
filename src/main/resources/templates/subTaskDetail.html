@@ -2,33 +2,33 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
-    <title>Task detail</title>
+    <title th:text="#{task detail}"></title>
 </head>
 <nav>
     <ul>
-        <li> <a href="/tasks">TaskOverview</a></li>
-        <li><a href="/tasks/new">AddTask</a> </li>
-        <li><a th:href="@{/tasks/{id}(id = ${subtask.parentID})}">Main Task</a> </li>
+        <li> <a href="/tasks" th:text="#{taskoverview}"></a></li>
+        <li><a href="/tasks/new" th:text="#{addtask}"></a> </li>
+        <li><a th:href="@{/tasks/{id}(id = ${subtask.parentID})}" th:text="#{main task}"></a> </li>
     </ul>
 </nav>
 <body>
-<h1>Subtask detail</h1>
+<h1 th:text="#{subtask detail}"></h1>
 <table>
     <tr>
-        <th>Title: </th>
+        <th th:text="#{title}"></th>
         <td th:text="${subtask.title}"></td>
     </tr>
     <tr>
-        <th>Description: </th>
+        <th th:text="#{description}"></th>
         <td th:text="${subtask.description}"></td>
     </tr>
     <tr>
-        <th>Due date: </th>
+        <th th:text="#{due date}"></th>
         <td th:text="${subtask.dueDate}"></td>
     </tr>
     <tr>
         <td>
-            <a th:href="@{/tasks/sub/edit/{subId}(subId = ${subtask.getsId()})}">edit Subtask</a>
+            <a th:href="@{/tasks/sub/edit/{subId}(subId = ${subtask.getsId()})}" th:text="#{edit subtask}"></a>
         </td>
     </tr>
 </table>

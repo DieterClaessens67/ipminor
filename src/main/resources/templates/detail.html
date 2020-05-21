@@ -2,31 +2,31 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
-    <title>Task detail</title>
+    <title th:text="#{detail task}"></title>
 </head>
 <nav>
     <ul>
-        <li> <a href="/tasks">TaskOverview</a></li>
-        <li><a href="/tasks/new">AddTask</a> </li>
+        <li> <a href="/tasks" th:text="#{taskoverview}"></a></li>
+        <li><a href="/tasks/new" th:text="#{addtask}"></a> </li>
     </ul>
 </nav>
 <body>
-<h1>Task detail</h1>
+<h1 th:text="#{detail task}"></h1>
 <table>
     <tr>
-        <th>Title: </th>
+        <th th:text="#{title}"></th>
         <td th:text="${task.title}"></td>
     </tr>
     <tr>
-        <th>Description: </th>
+        <th th:text="#{description}"></th>
         <td th:text="${task.description}"></td>
     </tr>
     <tr>
-        <th>Due date: </th>
+        <th th:text="#{due date}"></th>
         <td th:text="${task.dueDate}"></td>
     </tr>
     <tr>
-    <th>Subtasks:</th>
+    <th th:text="#{subtasks}"></th>
     </tr>
     <tr>
         <td>
@@ -35,8 +35,7 @@
         <a th:href="@{/tasks/{subId}/sub(subId = ${subTask.sId})}"><li th:text="${subTask.title}"></li> </a>
         <form method="post" th:action="@{/tasks/sub/delete/{subId}(subId = ${subTask.sId})}" class="inline">
             <input type="hidden" name="extra_submit_param" value="extra_submit_value">
-            <button type="submit" name="submit_param" value="submit_value" class="link-button">
-                Delete SubTask
+            <button type="submit" name="submit_param" value="submit_value" class="link-button" th:text="#{delete task}">
             </button>
         </form>
     </th:block>

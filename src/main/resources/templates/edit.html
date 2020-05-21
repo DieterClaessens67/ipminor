@@ -2,18 +2,18 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
-    <title>Edit Task</title>
+    <title th:text="#{edit task}"></title>
 </head>
 <body>
-<h1>Edit Task</h1>
+<h1 th:text="#{edit task}"></h1>
 <form th:action="@{/tasks/edit/{id}(id = ${id})}" method="post" th:object="${task}">
-    <label for="title">Title: </label>
+    <label for="title" th:text="#{title}"></label>
     <input th:field="*{title}" type="text" name="title" id="title"><br>
     <p th:errors="*{title}"></p>
-    <label for="description">Description: </label>
+    <label for="description" th:text="#{description}"></label>
     <input th:field="*{description}" type="text" name="description" id="description"><br>
     <p th:errors="*{description}"></p>
-    <label for="dueDate">Due date:</label>
+    <label for="dueDate" th:text="#{due date}"></label>
     <input th:field="*{dueDate}" type="datetime-local" name="dueDate" id="dueDate"><br>
     <p th:errors="*{dueDate}"></p>
     <input type="submit" value="submit">

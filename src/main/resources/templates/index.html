@@ -2,28 +2,27 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
-    <title>Overview</title>
+    <title th:text="#{overview}"></title>
 </head>
 <nav>
     <ul>
-        <li> <a href="/tasks">TaskOverview</a></li>
-        <li><a href="/tasks/new">AddTask</a> </li>
+        <li> <a href="/tasks" th:text="#{taskoverview}"></a></li>
+        <li><a href="/tasks/new" th:text="#{addtask}"></a> </li>
     </ul>
 </nav>
 <body>
-<h1>Tasks</h1>
+<h1 th:text="#{tasks}"></h1>
 <th:block th:each="error : ${errors}">
     <p th:text="${error}"></p>
 </th:block>
 <ul>
     <th:block th:each="task : ${tasks}">
         <a th:href="@{/tasks/{id}(id = ${task.id})}"> <li th:text="${task.toString()}"></li> </a>
-        <a th:href="@{/tasks/edit/{id}(id = ${task.id})}">edit</a>
-        <a th:href="@{/tasks/{id}/sub/create(id = ${task.id})}">create subtask</a>
+        <a th:href="@{/tasks/edit/{id}(id = ${task.id})}" th:text="#{edit}"></a>
+        <a th:href="@{/tasks/{id}/sub/create(id = ${task.id})}" th:text="#{create subtask}"></a>
         <form method="post" th:action="@{/tasks/delete/{id}(id = ${task.id})}" class="inline">
             <input type="hidden" name="extra_submit_param" value="extra_submit_value">
-            <button type="submit" name="submit_param" value="submit_value" class="link-button">
-                Delete Task
+            <button type="submit" name="submit_param" value="submit_value" class="link-button" th:text="#{delete task}">
             </button>
         </form>
     </th:block>
