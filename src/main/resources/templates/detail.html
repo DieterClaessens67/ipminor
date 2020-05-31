@@ -10,6 +10,12 @@
         <li><a href="/tasks/new" th:text="#{addtask}"></a> </li>
     </ul>
 </nav>
+<span th:text="#{difflang}"></span>:
+<select id="locales">
+    <option value=""></option>
+    <option value="en" th:text="#{langeng}"></option>
+    <option value="nl" th:text="#{langnl}"></option>
+</select>
 <body>
 <h1 th:text="#{detail task}"></h1>
 <table>
@@ -44,4 +50,16 @@
     </tr>
 </table>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#locales").change(function () {
+            var selectedOption = $('#locales').val();
+            if (selectedOption != ''){
+                window.location.replace('?lang=' + selectedOption);
+            }
+        });
+    });
+</script>
 </html>
